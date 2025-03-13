@@ -1,0 +1,13 @@
+Problem link : https://leetcode.com/problems/number-of-good-pairs/description/
+Solution link : https://leetcode.com/problems/number-of-good-pairs/submissions/1572194049
+
+Solution : 
+class Solution {
+  int numIdenticalPairs(List<int> nums) {
+    List<int> freq = List.filled(105, 0);
+    nums.forEach((e) => freq[e]++);
+    int ans = 0;
+    freq.forEach((e) => ans += ((e * (e - 1)) ~/ 2));
+    return ans;
+  }
+}
