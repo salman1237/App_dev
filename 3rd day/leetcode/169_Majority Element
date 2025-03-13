@@ -1,0 +1,25 @@
+Problem link : https://leetcode.com/problems/majority-element/description/
+Solution link : https://leetcode.com/problems/majority-element/submissions/1572523123
+
+solution: 
+class Solution {
+  int majorityElement(List<int> nums) {
+    var freq = <int, int>{};
+    for (var e in nums) {
+      if (!freq.containsKey(e)) {
+        freq[e] = 0;
+      }
+      freq[e] = freq[e]! + 1;
+    }
+
+    int mx = -1;
+    int ans = 0;
+    freq.forEach((key, value) {
+      if (value > mx) {
+        mx = value;
+        ans = key;
+      }
+    });
+    return ans;
+  }
+}
