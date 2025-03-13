@@ -1,1 +1,20 @@
-
+Problem link : https://leetcode.com/problems/subsets/
+solution link : https://leetcode.com/problems/subsets/submissions/1572841064
+Solution :
+class Solution {
+  List<List<int>> subsets(List<int> nums) {
+    List<List<int>>ans=[];
+    int n=nums.length;
+    int sub=1<<n;
+    for(int i=0; i<sub; i++){
+      List<int>tmp=[];
+      for(int j=0; j<n; j++){
+        if((i & (1<<j))!=0){
+          tmp.add(nums[j]);
+        } 
+      }
+      ans.add(tmp);
+    }
+    return ans;
+  }
+}
