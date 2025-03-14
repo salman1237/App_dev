@@ -1,0 +1,26 @@
+Question link : https://leetcode.com/problems/maximum-candies-allocated-to-k-children/description/
+Solution: 
+class Solution {
+  bool possible(int md, List<int> candies, int k) {
+    int tot = 0;
+    for (var u in candies) {
+      tot += (u ~/ md);
+    }
+    return tot >= k;
+  }
+
+  int maximumCandies(List<int> candies, int k) {
+    int lo = 1, hi = 10000000;
+    int ans = 0;
+    while (lo <= hi) {
+      int md = (lo + hi) ~/ 2;
+      if (possible(md, candies, k)) {
+        ans = md;
+        lo = md + 1;
+      } else {
+        hi = md - 1;
+      }
+    }
+    return ans;
+  }
+}
